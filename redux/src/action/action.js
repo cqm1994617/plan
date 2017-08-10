@@ -1,20 +1,24 @@
-export const ADD = 'ADD';
+let id = 0;
 
-export function add() {
+export function addTodo(value) {
   return {
-    type: 'ADD'
+    type: 'ADD',
+    id: id++,
+    value
   }
 }
 
-export function setNumber(num) {
+export function deleteTodo(id) {
   return {
-    type: 'SET',
-    num
+    type: 'DELETE',
+    id
   }
 }
 
-export function init() {
+export function editTodo(id, value) {
   return {
-    type: 'INIT'
+    type: 'EDIT',
+    value,
+    id
   }
 }

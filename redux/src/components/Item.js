@@ -1,27 +1,13 @@
 import React from 'react';
-import ModalState from '../stores/ModalState';
 
-export default class Item extends React.Component {
+const Item = ({deleteTodo, editTodo, data}) => (
+  <li className="item">
+    <div>{data.id + 1}. {data.value}</div>
+    <div>
+      <button className="btn btn-mg" onClick={editTodo(data.value)}>编辑</button>
+      <button className="btn btn-mg" onClick={deleteTodo}>删除</button>
+    </div>
+  </li>
+);
 
-  static propTypes = {
-    text: React.PropTypes.string,
-  };
-
-  static contextTypes = {
-    appStore: React.PropTypes.object,
-  };
-
-  render() {
-    const { text, id } = this.props;
-    const { appStore } = this.context;
-    return (
-      <div className="item">
-        <p>{id + 1}、{text}</p>
-        <div>
-          <button onClick={() => ModalState.showModal(id)}>编辑</button>
-          <button onClick={() => appStore.removeTodo(id)}>删除</button>
-        </div>
-      </div>
-    );
-  }
-}
+export default Item;

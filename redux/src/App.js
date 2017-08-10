@@ -1,8 +1,14 @@
 import React from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {add, setNumber, init} from './action/action';
-import Main from './components/Main';
+import AddTodo from './components/AddTodo';
+import Tabs from './components/Tabs';
+import TodoList from './components/TodoList';
+import Footer from './components/Footer';
+import './main.scss';
+
+//import {bindActionCreators} from 'redux';
+//import {connect} from 'react-redux';
+//import {add, setNumber, init} from './action/action';
+
 
 /*
 import * as action from './action/action';
@@ -11,25 +17,24 @@ import * as action from './action/action';
  })
  */
 
-
-
+/*
 @connect((state) => state, (dispatch) => ({
   add: () => dispatch(add()),
   setNumber: (z) => dispatch(setNumber(z)),
   init: () => dispatch(init(15))
 }))
+*/
+
+
 export default class App extends React.Component {
 
   render() {
-    console.log(this.props);
-    const {dispatch, add, setNumber, init} = this.props;
     return (
-      <div>
-        {this.props.reducer.num} <br />
-        {this.props.reducer2.data}
-        <button onClick={() => add()}>+1</button>
-        <button onClick={() => setNumber(120)}>setNumber = 120</button>
-        <button onClick={() => init()}>INIT</button>
+      <div className="container">
+        <AddTodo />
+        <Tabs />
+        <TodoList />
+        <Footer />
       </div>
     );
   }
